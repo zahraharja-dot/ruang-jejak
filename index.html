@@ -432,6 +432,57 @@
                 alert("Terjadi kesalahan saat menyimpan data ke database.");
             }
         }
-    </script>
-</body>
+    // 1. Import modul Firebase yang dibutuhkan
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    // 2. Konfigurasi Firebase Anda
+    const firebaseConfig = {
+        apiKey: "AIzaSyBpULFkwbpIbQvNqNosKQcWh3uvJ41lXg",
+        authDomain: "ruang-jejak-25a2a.firebaseapp.com",
+        databaseURL: "https://ruang-jejak-25a2a-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "ruang-jejak-25a2a",
+        storageBucket: "ruang-jejak-25a2a.appspot.com",
+        messagingSenderId: "566361780237",
+        appId: "1:566361780237:web:c6097d9aea4c6cdcfa244",
+        measurementId: "G-KKTHB91L8R"
+    };
+
+    // 3. Inisialisasi Firebase & Realtime Database
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // 4. Fungsi Modal & Interaksi Frontend (jika ada)
+    window.readMore = function(title, content) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalBody').innerText = content;
+        document.getElementById('readModal').classList.remove('hidden');
+    };
+
+    window.closeReadModal = function() {
+        document.getElementById('readModal').classList.add('hidden');
+    };
+
+    // 5. LISTENER REALTIME: Menarik & menampilkan data otomatis agar tidak hilang saat di-refresh
+    const jejakRef = ref(db, 'jejak');
+    onValue(jejakRef, (snapshot) => {
+        const data = snapshot.val();
+        const container = document.getElementById('daftar-jejak'); // Pastikan HTML kamu punya elemen dengan id="daftar-jejak"
+        
+        if (container) {
+            container.innerHTML = ""; // Bersihkan tampilan lama agar tidak menumpuk dobel
+            
+            if (data) {
+                Object.values(data).forEach((item) => {
+                    // Tampilkan data ke layar (sesuaikan propertinya dengan input form kamu, misal item.pesan atau item.nama)
+                    container.innerHTML += `
+                        <div class="p-4 bg-white/10 rounded-lg text-white mb-2">
+                            <p>${item.pesan || item.nama || 'Jejak baru'}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+    });
+</script>
 </html>
