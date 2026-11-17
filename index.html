@@ -435,6 +435,18 @@
     // 1. Import modul Firebase yang dibutuhkan
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+// --- KODE UNTUK MENGHIDUPKAN TOMBOL TAMBAH JEJAK ---
+const btnTambah = document.getElementById('btn-tambah');
+const modalTambah = document.getElementById('modalTambah'); // Ganti 'modalTambah' dengan ID form/modal aslimu jika berbeda
+
+if (btnTambah) {
+    btnTambah.addEventListener('click', (e) => {
+        e.preventDefault(); // Mencegah halaman melompat ke atas jika pakai tag <a>
+        if (modalTambah) {
+            modalTambah.classList.remove('hidden'); // Memunculkan modal/form
+        }
+    });
+}
 
     // 2. Konfigurasi Firebase Anda
     const firebaseConfig = {
