@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Jejak — Menyimpan Memori, Merajut Arti</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blush: {
+                            50: '#fff5f7',
+                            100: '#ffe3e8',
+                            200: '#ffd1d9',
+                            600: '#d96b82',
+                            700: '#b84a62',
+                            900: '#7a2d3e',
+                        },
+                        cream: {
+                            50: '#fffbfb',
+                            100: '#fff5f5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .serif-title {
+            font-family: 'Newsreader', serif;
+        }
+    </style>
+</head>
+<body class="bg-blush-50 text-blush-900 antialiased selection:bg-blush-600 selection:text-white">
+
+    <!-- Header & Navigasi -->
+    <header class="sticky top-0 z-40 bg-blush-50/85 backdrop-blur-md border-b border-blush-200">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#beranda" class="serif-title text-2xl font-bold tracking-tight text-blush-900">
+                Ruang Jejak<span class="text-blush-600">.</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-blush-900/80">
+                <a href="#beranda" class="hover:text-blush-600 transition">Beranda</a>
+                <a href="#kata" class="hover:text-blush-600 transition">Jejak Kata</a>
+                <a href="#karya" class="hover:text-blush-600 transition">Jejak Karya</a>
+                <a href="#belajar" class="hover:text-blush-600 transition">Jejak Belajar</a>
+                <a href="#tentang" class="hover:text-blush-600 transition">Tentang</a>
+            </nav>
+
+            <button onclick="openAddModal()" class="bg-blush-600 hover:bg-blush-700 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-sm transition">
+                + Tambah Jejak
+            </button>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-24">
+
+        <!-- 1. BERANDA / HERO -->
+        <section id="beranda" class="pt-8 pb-12 flex flex-col items-start space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-blush-100 px-3 py-1 rounded-full text-xs font-medium text-blush-700">
+                <span class="w-2 h-2 rounded-full bg-blush-600 animate-pulse"></span>
+                <span>Catatan perjalanan yang sedang berjalan</span>
+            </div>
+            <h1 class="serif-title text-4xl md:text-6xl font-normal leading-tight">
+                Menyimpan memori, <br /><span class="italic font-light text-blush-600">merajut arti.</span>
+            </h1>
+            <p class="text-blush-900/80 text-base md:text-lg max-w-xl font-light leading-relaxed">
+                Selamat datang di ruang digital pribadiku. Tempat di mana aku merangkum cerita, memajang karya kreatif, dan mencatat proses belajar dari hari ke hari.
+            </p>
+            
+            <!-- Gambar Banner Utama -->
+            <div class="w-full h-64 md:h-80 rounded-3xl overflow-hidden shadow-md border border-blush-200 mt-2">
+                <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=1200" alt="Suasana Hangat" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+            </div>
+
+            <div class="flex items-center space-x-4 pt-4">
+                <a href="#kata" class="bg-blush-900 text-blush-50 px-6 py-3 rounded-xl text-sm font-medium hover:bg-blush-700 transition shadow-sm">
+                    Jelajahi Jejak
+                </a>
+                <a href="#tentang" class="border border-blush-200 text-blush-900 px-6 py-3 rounded-xl text-sm font-medium hover:bg-blush-100 transition">
+                    Kenalan Dulu
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. JEJAK KATA -->
+        <section id="kata" class="space-y-8">
+            <div class="border-b border-blush-200 pb-4 flex justify-between items-end">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-blush-600 font-semibold">Rubrik 01</span>
+                    <h2 class="serif-title text-3xl font-normal">Jejak Kata</h2>
+                </div>
+                <p class="text-sm text-blush-900/70 hidden md:block">Esai kecil, opini, dan cerita harian.</p>
+            </div>
+
+            <div id="container-kata" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <article class="bg-white rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden">
+                    <div class="h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600" alt="Berdamai dengan Waktu" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between text-xs text-blush-900/70 mb-3">
+                            <span>20 September 2026</span>
+                            <span class="bg-blush-100 text-blush-700 px-2.5 py-0.5 rounded-full font-medium">Refleksi</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-semibold mb-2 text-blush-900">Belajar Berdamai dengan Waktu</h3>
+                        <p class="text-blush-900/80 text-sm font-light line-clamp-3">
+                            Terkadang kita terlalu terburu-buru mengejar target hingga lupa menikmati proses kecil yang sedang terjadi hari ini. Sebuah catatan tentang pentingnya melambat sejenak.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="readMore('Belajar Berdamai dengan Waktu', 'Terkadang kita terlalu terburu-buru mengejar target hingga lupa menikmati proses kecil yang sedang terjadi hari ini. Sebuah catatan tentang pentingnya melambat sejenak dan menghargai setiap langkah kecil yang sudah diambil.')" class="text-sm font-semibold text-blush-600 hover:text-blush-700 inline-flex items-center space-x-1">
+                            <span>Baca selengkapnya</span> &rarr;
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden">
+                    <div class="h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600" alt="Menemukan Ritme" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between text-xs text-blush-900/70 mb-3">
+                            <span>15 September 2026</span>
+                            <span class="bg-blush-100 text-blush-700 px-2.5 py-0.5 rounded-full font-medium">Catatan Harian</span>
+                        </div>
+                        <h3 class="serif-title text-xl font-semibold mb-2 text-blush-900">Menemukan Ritme di Antara Kesibukan</h3>
+                        <p class="text-blush-900/80 text-sm font-light line-clamp-3">
+                            Menyeimbangkan antara tugas akademik, proyek kreatif, dan waktu istirahat bukanlah hal yang mudah. Ini adalah strategi kecil yang kucoba terapkan minggu ini.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="readMore('Menemukan Ritme di Antara Kesibukan', 'Menyeimbangkan antara tugas akademik, proyek kreatif, dan waktu istirahat bukanlah hal yang mudah. Ini adalah strategi kecil yang kucoba terapkan minggu ini agar tetap produktif tanpa merasa burn out.')" class="text-sm font-semibold text-blush-600 hover:text-blush-700 inline-flex items-center space-x-1">
+                            <span>Baca selengkapnya</span> &rarr;
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. JEJAK KARYA -->
+        <section id="karya" class="space-y-8">
+            <div class="border-b border-blush-200 pb-4 flex justify-between items-end">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-blush-600 font-semibold">Rubrik 02</span>
+                    <h2 class="serif-title text-3xl font-normal">Jejak Karya</h2>
+                </div>
+                <p class="text-sm text-blush-900/70 hidden md:block">Eksperimen kode, desain, dan proyek kreatif.</p>
+            </div>
+
+            <div id="container-karya" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition">
+                    <div class="h-40 rounded-xl mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" alt="Hardware" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <span class="text-xs text-blush-700 font-semibold bg-blush-100 px-2.5 py-0.5 rounded-full">Informatika & Hardware</span>
+                    <h3 class="serif-title text-xl font-semibold mt-2 mb-1 text-blush-900">Sistem Sensor Mikrocontroller</h3>
+                    <p class="text-blush-900/80 text-sm font-light mb-4">
+                        Eksperimen pemrograman sensor dan sistem otomatisasi menggunakan rangkaian perangkat elektronik dasar.
+                    </p>
+                    <span class="text-xs text-blush-900/70 font-mono bg-blush-50 px-2 py-1 rounded border border-blush-100">C++ / Arduino</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition">
+                    <div class="h-40 rounded-xl mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=600" alt="Web" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <span class="text-xs text-blush-700 font-semibold bg-blush-100 px-2.5 py-0.5 rounded-full">Web Development</span>
+                    <h3 class="serif-title text-xl font-semibold mt-2 mb-1 text-blush-900">Ruang Jejak Digital</h3>
+                    <p class="text-blush-900/80 text-sm font-light mb-4">
+                        Pembangunan situs web personal bergaya minimalis untuk mendokumentasikan tulisan dan catatan studi.
+                    </p>
+                    <span class="text-xs text-blush-900/70 font-mono bg-blush-50 px-2 py-1 rounded border border-blush-100">HTML / Tailwind CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. JEJAK BELAJAR -->
+        <section id="belajar" class="space-y-8">
+            <div class="border-b border-blush-200 pb-4 flex justify-between items-end">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-blush-600 font-semibold">Rubrik 03</span>
+                    <h2 class="serif-title text-3xl font-normal">Jejak Belajar</h2>
+                </div>
+                <p class="text-sm text-blush-900/70 hidden md:block">Rangkuman rumus, sains, dan teori.</p>
+            </div>
+
+            <div id="container-belajar" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-2xl border border-blush-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-blush-600">Matematika Tingkat Lanjut</span>
+                        <h4 class="serif-title text-lg font-semibold text-blush-900 mt-1 mb-2">Catatan Vektor & Operasinya</h4>
+                        <p class="text-xs text-blush-900/80 font-light leading-relaxed mb-4">
+                            Rangkuman rumus perkalian titik (dot product), silang (cross product), dan aplikasinya dalam geometri ruang.
+                        </p>
+                    </div>
+                    <div class="h-28 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=400" alt="Matematika" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-blush-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-blush-600">Sains / IPA</span>
+                        <h4 class="serif-title text-lg font-semibold text-blush-900 mt-1 mb-2">Dinamika & Hukum Newton</h4>
+                        <p class="text-xs text-blush-900/80 font-light leading-relaxed mb-4">
+                            Analisis gaya pada bidang miring, tegangan tali, dan penyelesaian soal latihan fisika kelas 12.
+                        </p>
+                    </div>
+                    <div class="h-28 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=400" alt="Sains" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-blush-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold text-blush-600">Teknologi</span>
+                        <h4 class="serif-title text-lg font-semibold text-blush-900 mt-1 mb-2">Dasar Logika Algoritma</h4>
+                        <p class="text-xs text-blush-900/80 font-light leading-relaxed mb-4">
+                            Catatan struktur data dasar, perulangan, dan percabangan dalam pemecahan masalah komputasional.
+                        </p>
+                    </div>
+                    <div class="h-28 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400" alt="Teknologi" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TENTANG SAYA -->
+        <section id="tentang" class="bg-white p-8 md:p-12 rounded-3xl border border-blush-200 shadow-sm space-y-6 flex flex-col md:flex-row items-center gap-8">
+            <!-- Foto Profil Wanita Berhijab -->
+            <div class="w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden flex-shrink-0 border border-blush-200 shadow-inner">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=500" alt="Foto Profil Berhijab" class="w-full h-full object-cover">
+            </div>
+            <div class="space-y-4">
+                <span class="text-xs uppercase tracking-widest text-blush-600 font-semibold">Tentang Pemilik Web</span>
+                <h2 class="serif-title text-3xl font-normal">Halo, selamat datang di ruangku.</h2>
+                <p class="text-blush-900/80 font-light leading-relaxed">
+                    Website ini kubangun sebagai tempat peristirahatan digital untuk merangkum berbagai hal yang sedang dipelajari, dikerjakan, dan direnungkan. Senang rasanya bisa berbagi jejak kecil ini denganmu yang sedang berkunjung.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-3 text-sm font-medium text-blush-900/80">
+                    <span class="bg-blush-100 text-blush-700 px-3 py-1.5 rounded-lg">✨ Penulis Catatan</span>
+                    <span class="bg-blush-100 text-blush-700 px-3 py-1.5 rounded-lg">💻 Penggiat Teknologi & Sains</span>
+                    <span class="bg-blush-100 text-blush-700 px-3 py-1.5 rounded-lg">🌱 Penjelajah Ide Baru</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-blush-200 bg-white mt-24 py-8 text-center text-xs text-blush-900/70">
+        <p>&copy; 2026 Ruang Jejak. Dibuat dengan penuh ketenangan.</p>
+    </footer>
+
+    <!-- MODAL BACA TULISAN -->
+    <div id="readModal" class="fixed inset-0 bg-blush-900/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-lg w-full p-6 md:p-8 rounded-3xl shadow-xl space-y-4 relative border border-blush-200">
+            <button onclick="closeReadModal()" class="absolute top-4 right-4 text-blush-900/60 hover:text-blush-900 font-bold text-lg">&times;</button>
+            <span id="modalCategory" class="text-xs font-semibold text-blush-600 bg-blush-100 px-2.5 py-1 rounded-full">Rubrik Kata</span>
+            <h3 id="modalTitle" class="serif-title text-2xl font-semibold text-blush-900">Judul Tulisan</h3>
+            <p id="modalBody" class="text-blush-900/80 text-sm font-light leading-relaxed">Isi tulisan lengkap...</p>
+            <div class="pt-4 border-t border-blush-200 flex justify-end">
+                <button onclick="closeReadModal()" class="bg-blush-900 text-white text-xs px-4 py-2 rounded-xl">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TAMBAH JEJAK BARU -->
+    <div id="addModal" class="fixed inset-0 bg-blush-900/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full p-6 md:p-8 rounded-3xl shadow-xl space-y-4 relative border border-blush-200">
+            <button onclick="closeAddModal()" class="absolute top-4 right-4 text-blush-900/60 hover:text-blush-900 font-bold text-lg">&times;</button>
+            <h3 class="serif-title text-2xl font-semibold text-blush-900">Tambah Jejak Baru</h3>
+            <p class="text-xs text-blush-900/70 font-light">Catat pemikiran, karya, atau materi belajar baru ke dalam webmu secara instan.</p>
+            
+            <form id="addForm" onsubmit="handleAddNew(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-blush-900/80 mb-1">Pilih Rubrik</label>
+                    <select id="inputRubrik" class="w-full text-sm border border-blush-200 rounded-xl p-2.5 bg-blush-50 outline-none focus:border-blush-600">
+                        <option value="kata">Jejak Kata (Tulisan)</option>
+                        <option value="karya">Jejak Karya (Proyek)</option>
+                        <option value="belajar">Jejak Belajar (Studi)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-blush-900/80 mb-1">Judul</label>
+                    <input type="text" id="inputTitle" required placeholder="Contoh: Belajar Pemrograman Python" class="w-full text-sm border border-blush-200 rounded-xl p-2.5 bg-blush-50 outline-none focus:border-blush-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-blush-900/80 mb-1">Deskripsi / Isi Singkat</label>
+                    <textarea id="inputDesc" required rows="3" placeholder="Tuliskan catatan singkat di sini..." class="w-full text-sm border border-blush-200 rounded-xl p-2.5 bg-blush-50 outline-none focus:border-blush-600"></textarea>
+                </div>
+                <div class="pt-2 flex justify-end space-x-2">
+                    <button type="button" onclick="closeAddModal()" class="border border-blush-200 text-blush-900 text-xs px-4 py-2 rounded-xl">Batal</button>
+                    <button type="submit" class="bg-blush-600 hover:bg-blush-700 text-white text-xs px-5 py-2 rounded-xl font-medium">Simpan Jejak</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Interaksi Website & Firebase SDK -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+        // Konfigurasi Firebase Anda
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpULFkwbpTbqONvQnosKQcWh3uvJ4lIXg",
+            authDomain: "ruang-jejak-25a2a.firebaseapp.com",
+            databaseURL: "https://ruang-jejak-25a2a-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "ruang-jejak-25a2a",
+            storageBucket: "ruang-jejak-25a2a.firebasestorage.app",
+            messagingSenderId: "566361780237",
+            appId: "1:566361780237:web:c6097d9aea46c6cdcf2544",
+            measurementId: "G-KKTHB91L8R"
+        };
+
+        // Inisialisasi Firebase & Realtime Database
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Fungsi Modal & Interaksi Frontend
+        window.readMore = function(title, content) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = content;
+            document.getElementById('readModal').classList.remove('hidden');
+        }
+
+        window.closeReadModal = function() {
+            document.getElementById('readModal').classList.add('hidden');
+        }
+
+        window.openAddModal = function() {
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        window.closeAddModal = function() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        // Fungsi saat form tambah jejak disubmit (Menyimpan ke Firebase Realtime Database)
+        window.handleAddNew = async function(event) {
+            event.preventDefault();
+            const rubrik = document.getElementById('inputRubrik').value;
+            const title = document.getElementById('inputTitle').value;
+            const desc = document.getElementById('inputDesc').value;
+
+            try {
+                // Simpan data ke Firebase Realtime Database berdasarkan rubrik
+                const dbRef = ref(db, 'jejak/' + rubrik);
+                await push(dbRef, {
+                    title: title,
+                    description: desc,
+                    createdAt: new Date().toISOString()
+                });
+
+                alert("Jejak berhasil disimpan ke database Firebase!");
+
+                // Render tampilan secara lokal di web
+                if (rubrik === 'kata') {
+                    const container = document.getElementById('container-kata');
+                    const card = document.createElement('article');
+                    card.className = "bg-white rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden";
+                    card.innerHTML = `
+                        <div class="h-40 overflow-hidden bg-blush-100 flex items-center justify-center text-blush-900 text-xs">
+                            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=600" alt="Catatan Baru" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between text-xs text-blush-900/70 mb-3">
+                                <span>Baru saja</span>
+                                <span class="bg-blush-100 text-blush-700 px-2.5 py-0.5 rounded-full font-medium">Catatan Baru</span>
+                            </div>
+                            <h3 class="serif-title text-xl font-semibold mb-2 text-blush-900">${title}</h3>
+                            <p class="text-blush-900/80 text-sm font-light line-clamp-3">${desc}</p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <button onclick="readMore('${title}', '${desc}')" class="text-sm font-semibold text-blush-600 hover:text-blush-700 inline-flex items-center space-x-1">
+                                <span>Baca selengkapnya</span> &rarr;
+                            </button>
+                        </div>
+                    `;
+                    container.prepend(card);
+                } else if (rubrik === 'belajar') {
+                    const container = document.getElementById('container-belajar');
+                    const card = document.createElement('div');
+                    card.className = "bg-white p-5 rounded-2xl border border-blush-200 shadow-sm flex flex-col justify-between";
+                    card.innerHTML = `
+                        <div>
+                            <span class="text-xs font-semibold text-blush-600">Catatan Baru</span>
+                            <h4 class="serif-title text-lg font-semibold text-blush-900 mt-1 mb-2">${title}</h4>
+                            <p class="text-xs text-blush-900/80 font-light leading-relaxed mb-4">${desc}</p>
+                        </div>
+                        <div class="h-28 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400" alt="Studi Baru" class="w-full h-full object-cover">
+                        </div>
+                    `;
+                    container.prepend(card);
+                } else if (rubrik === 'karya') {
+                    const container = document.getElementById('container-karya');
+                    const card = document.createElement('div');
+                    card.className = "bg-white p-6 rounded-2xl border border-blush-200 shadow-sm hover:shadow-md transition";
+                    card.innerHTML = `
+                        <div class="h-40 rounded-xl mb-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Proyek Baru" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-xs text-blush-700 font-semibold bg-blush-100 px-2.5 py-0.5 rounded-full">Proyek</span>
+                        <h3 class="serif-title text-xl font-semibold mt-2 mb-1 text-blush-900">${title}</h3>
+                        <p class="text-blush-900/80 text-sm font-light mb-4">${desc}</p>
+                        <span class="text-xs text-blush-900/70 font-mono bg-blush-50 px-2 py-1 rounded border border-blush-100">Custom Project</span>
+                    `;
+                    container.prepend(card);
+                }
+
+                // Reset & Close Modal
+                document.getElementById('addForm').reset();
+                closeAddModal();
+
+            } catch (error) {
+                console.error("Gagal menyimpan ke database: ", error);
+                alert("Terjadi kesalahan saat menyimpan data ke database.");
+            }
+        }
+    </script>
+</body>
+</html>
